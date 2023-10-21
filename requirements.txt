@@ -1,0 +1,9 @@
+matplotlib==3.7.2
+numpy==1.26.0
+pandas==2.1.1
+plotly==5.17.0
+python==3.11.5
+scikit-learn==1.2.2
+streamlit==1.27.2
+streamlit-js-eval==0.1.5
+xgboost==1.7.3
