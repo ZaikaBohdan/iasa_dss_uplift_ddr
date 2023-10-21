@@ -87,9 +87,8 @@ if split_method is not None:
                 
                 generate_corr_map_clicked = st.button('Внести зміни та згенерувати матрицю')
 
-            
-            cols = list(data_train.drop(columns=[id_col, treatment_col]+ban_cols).columns)
             if generate_corr_map_clicked:
+                cols = list(data_train.drop(columns=[id_col, treatment_col]+ban_cols).columns)
                 with st.spinner('Розрахунок коефіцієнтів кореляції в процесі...'):
                     st.session_state.show_corr_map = True
                     corr_comp = data_train[cols].corr(method='spearman')[response_col].reset_index().merge(
