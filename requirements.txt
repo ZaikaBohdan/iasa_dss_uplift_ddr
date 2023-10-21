@@ -5,4 +5,4 @@ plotly==5.17.0
 scikit-learn==1.2.2
 streamlit==1.27.2
 streamlit-js-eval==0.1.5
-xgboost==1.7.3
+xgboost==2.0.0

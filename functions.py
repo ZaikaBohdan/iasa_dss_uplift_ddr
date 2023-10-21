@@ -49,9 +49,9 @@ def data_info(data):
 
 def corr_heatmap(data):
     corr = data.corr(method='spearman').round(3)
-    window_width = streamlit_js_eval(js_expressions='window.innerWidth', key = 'SCR')
+    # window_width = streamlit_js_eval(js_expressions='window.innerWidth', key = 'SCR')
     fig = px.imshow(corr, text_auto=True, aspect="auto")
-    fig.update_layout(autosize=False, width=window_width)
+    # fig.update_layout(autosize=False, width=window_width)
     return fig
 
 def get_x_y_t(data, id_col, y_col, t_col):

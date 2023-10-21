@@ -147,9 +147,9 @@ if split_method is not None:
                         st.pyplot(plot_qini_curve(t_test, y_test, st.session_state.last_model_uplift, normalize_n=qini_x_type, plot_perfect=perfect_qini_required))
                     st.divider()
                 
-                    st.write('## 4. Оцінка впливу акції на нових користувачів')
+                    st.write('## 4. Оцінка впливу комунікації на нових користувачів')
                     with st.sidebar:
-                        st.write('# 4. Оцінка впливу акції на нових користувачів')
+                        st.write('# 4. Оцінка впливу комунікації на нових користувачів')
                         st.write('## 4.1. Виберіть файл з даними')
                         new_users_file = st.file_uploader("Виберіть файл з даними про нових користувачів", type=["xlsx", "csv", "parquet"])
 
@@ -157,7 +157,7 @@ if split_method is not None:
                         new_users = file_to_df(new_users_file) 
                         st.write('### Огляд завантажених даних')
                         st.write(new_users)
-                        with st.spinner('Розрахунок оцінок впливу акції в процесі...'):
+                        with st.spinner('Розрахунок оцінок впливу комунікації в процесі...'):
                             X_new_users = new_users.drop(columns=ban_cols+[id_col])
                             uplift_new_users = st.session_state.last_model.predict(X_new_users)
                             uplift_new_users = pd.concat([new_users[id_col], pd.Series(uplift_new_users, name='predicted_uplift')], axis=1)
@@ -168,8 +168,8 @@ if split_method is not None:
                             st.write('## 4.2. Завантаження результатів')
                             st.download_button(
                                 label="📥 Завантажити в .csv форматі",
-                                data=uplift_new_users.to_csv(),
-                                file_name='large_df.csv',
+                                data=uplift_new_users.to_csv(index=False),
+                                file_name='uplift_results.csv',
                                 mime='text/csv',
                             )
 
